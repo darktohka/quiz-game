@@ -1,4 +1,7 @@
-import type { ToastActionElement, ToastProps } from '@/components/game/ui/toast';
+import type {
+  ToastActionElement,
+  ToastProps,
+} from '@/components/game/ui/toast';
 import { Action } from '@radix-ui/react-toast';
 import { useEffect, useState } from 'preact/hooks';
 import type { ReactNode } from 'preact/compat';
@@ -19,6 +22,7 @@ function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER;
   return count.toString();
 }
+
 /* eslint-disable no-unused-vars */
 enum ActionType {
   ADD_TOAST = 'ADD_TOAST',
@@ -79,7 +83,7 @@ export const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { ...t, ...action.toast } : t,
+          t.id === action.toast.id ? { ...t, ...action.toast } : t
         ),
       };
 
@@ -104,7 +108,7 @@ export const reducer = (state: State, action: Action): State => {
                 ...t,
                 open: false,
               }
-            : t,
+            : t
         ),
       };
     }

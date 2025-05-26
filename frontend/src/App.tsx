@@ -1,5 +1,4 @@
 import { Route, Router, Switch } from '@react-nano/router';
-import { Toaster } from 'react-hot-toast';
 import { LoginPage } from './pages/LoginPage';
 import { MainPage } from './pages/MainPage';
 import { routeMatcherFactory } from './utils/router.util';
@@ -9,6 +8,7 @@ import { QuizPage } from './pages/QuizPage';
 import { TooltipProvider } from './components/game/ui/tooltip';
 import { GamePage } from './pages/GamePage';
 import { Toaster as Sonner } from 'sonner';
+import { Toaster } from '@/components/game/ui/toaster';
 
 export const App = () => (
   <TooltipProvider>
@@ -24,7 +24,6 @@ export const App = () => (
         <Route path="/admin/quiz" component={QuizPage} />
         <Route path="/" component={GamePage} />
       </Switch>
-      <Toaster />
     </Router>
   </TooltipProvider>
 );

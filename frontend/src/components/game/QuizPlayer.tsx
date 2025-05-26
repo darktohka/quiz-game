@@ -56,7 +56,7 @@ const QuizPlayer = ({
 
     const correctOption = currentQuestion.options.find((opt) => opt.isCorrect);
     const selectedOption = currentQuestion.options.find(
-      (opt) => opt.answer === selectedAnswer,
+      (opt) => opt.answer === selectedAnswer
     );
     const correct = selectedOption?.isCorrect || false;
 
@@ -68,7 +68,7 @@ const QuizPlayer = ({
         title: hu.correct,
         description: hu.youEarned.replace(
           ':points',
-          currentQuestion.points.toString(),
+          currentQuestion.points.toString()
         ),
       });
     } else {
@@ -76,7 +76,7 @@ const QuizPlayer = ({
         title: hu.incorrect,
         description: hu.correctAnswerWas.replace(
           ':answer',
-          correctOption?.answer,
+          correctOption ? correctOption.answer : 'N/A'
         ),
         variant: 'destructive',
       });

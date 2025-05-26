@@ -39,8 +39,6 @@ export const useGameState = () => {
     gamePhase: 'quiz-selection',
   });
 
-  console.log('Initial game state:', gameState);
-
   const selectQuiz = useCallback((quiz: QuizDTO) => {
     const firstQuestionSet = quiz.questionSets[0];
     const shuffledQuestions = [...firstQuestionSet.questions]

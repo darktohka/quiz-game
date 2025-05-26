@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast';
+import { toast } from '@/hooks/use-toast';
 import { ResponseDTO } from 'shared/src/dto/generic';
 import * as v from 'valibot';
 
@@ -12,19 +12,18 @@ export const showIssues = (issues: v.BaseIssue<unknown>[]) => {
 
   const message = formatIssues(issues);
 
-  toast.error(message, {
-    icon: '❌',
-  });
+  toast({ description: message, variant: 'destructive', icon: '❌' });
 };
 
 export const showErrors = (error: Error | ResponseDTO) => {
   console.error(error);
   if ((error as ResponseDTO).errors) {
-    toast.error(((error as ResponseDTO).errors ?? []).join('\n'), {
+    toast({
+      description: ((error as ResponseDTO).errors ?? []).join('\n'),
       icon: '❌',
     });
     return;
   }
 
-  toast.error((error as Error).message);
+  toast({ description: (error as Error).message });
 };
