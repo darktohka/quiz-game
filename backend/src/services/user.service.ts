@@ -1,4 +1,3 @@
-import { hash, verify } from 'argon2';
 import { HTTPException } from 'hono/http-exception';
 import { sign } from 'hono/jwt';
 import { Errors } from 'shared/src/dto/error';
@@ -25,7 +24,7 @@ export const loginUser = async (login: UserLoginDTO): Promise<SafeUserDTO> => {
     throw new HTTPException(400, { message: Errors.INVALID_CREDENTIALS });
   }
 
-  if (!(await verify(user.password, password))) {
+  if (!(await Bun.password.verify(user.password, password))) {
     throw new HTTPException(400, { message: Errors.INVALID_CREDENTIALS });
   }
 
@@ -48,7 +47,7 @@ export const registerUser = async (
   const user = {
     id: nanoid(),
     email,
-    password: await hash(password),
+    password: await Bun.password.hash(password),
     name,
   };
 
