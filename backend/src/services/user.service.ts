@@ -24,7 +24,7 @@ export const loginUser = async (login: UserLoginDTO): Promise<SafeUserDTO> => {
     throw new HTTPException(400, { message: Errors.INVALID_CREDENTIALS });
   }
 
-  if (!(await Bun.password.verify(user.password, password))) {
+  if (!(await Bun.password.verify(password, user.password))) {
     throw new HTTPException(400, { message: Errors.INVALID_CREDENTIALS });
   }
 
