@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "nodemon",
+    "generate": "prisma generate"
+  },
+  "dependencies": {
+    "argon2": "^0.43.0",
+    "hono": "^4.7.10",
+    "kysely": "^0.28.2",
+    "kysely-bun-sqlite": "^0.4.0",
+    "shared": "workspace:*"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
